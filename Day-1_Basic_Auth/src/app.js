@@ -1,18 +1,20 @@
 import express from 'express';
-import Thought from '../src/model/thought.model'
-import thoughtModel from '../src/model/thought.model';
+import thoughtModel from '../src/model/thought.model.js';
 
 const app = express();
 app.use(express.json());
 
 app.post("/api/thoughts", async(req, res) => {
     try{
-        const {title, decrtiption} = req.body;
+        const {title, descrtiption} = req.body;
 
         const newThought = await thoughtModel.create({
             title,
-            decrtiption
+            descrtiption
         })
+
+        res.status(201).json({message: "Thought saved successfully", newThought: newThought})
+
     }catch (error) {
         res.status(500).json({message: error.message})
     }
