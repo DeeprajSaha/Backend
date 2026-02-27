@@ -6,14 +6,15 @@ app.use(express.json());
 
 app.post("/api/thoughts", async(req, res) => {
     try{
-        const {title, descrtiption} = req.body;
+        const {title, description} = req.body;
 
         const newThought = await thoughtModel.create({
             title,
-            descrtiption
+            description
         })
 
-        res.status(201).json({message: "Thought saved successfully", newThought: newThought})
+        res.status(201).json({message: "Thought saved successfully",
+            newThought: { id: newThought._id, title: newThought.title, description: newThought.description}})
 
     }catch (error) {
         res.status(500).json({message: error.message})
