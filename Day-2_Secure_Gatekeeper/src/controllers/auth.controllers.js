@@ -17,7 +17,9 @@ export const registerUser = async (req, res) => {
 
         res.status(201).json({
             message: "User registered successfully",
-            user: { id: newUser._id,username: newUser.username }
+            user: { 
+                id: newUser._id,
+                username: newUser.username }
         })
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -31,7 +33,9 @@ export const loginUser = async (req, res) => {
         const user = await User.findOne({ email });
 
         if(!user) {
-            return res.status(404).json({message: "User not found"});
+            return res.status(404).json({
+                message: "User not found"
+            });
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
@@ -55,3 +59,17 @@ export const loginUser = async (req, res) => {
         res.status(500).json({message: err.message});
     }
 } 
+
+export const logoutUser = async (req, res) => {
+
+    try {
+        res.clearCookie("token").status(200).json({
+            message: "Logged out successfully!"
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+
+};
