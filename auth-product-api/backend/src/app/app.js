@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://backend-auth-gy2mclnez-deepraj1.vercel.app/"
+        "https://backend-auth-drab.vercel.app"
     ]
 }));
 
