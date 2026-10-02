@@ -190,8 +190,8 @@ Invalid requests return appropriate 400 responses with validation errors.
 
 ### GitHub Repository
 
-Coming soon.
+[Backend - Auth Product API](https://github.com/DeeprajSaha/Backend/tree/main/auth-product-api)
 
 ### Live Project
 
-Coming soon.
+[Auth Product API - Live Demo](https://backend-auth-drab.vercel.app/login)
